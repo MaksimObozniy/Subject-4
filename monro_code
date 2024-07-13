@@ -5,9 +5,6 @@ rgb_image_monro = image_monro.convert("RGB")
 
 image_red, image_green, image_blue = rgb_image_monro.split()
 
-new_image = Image.merge("RGB", (image_red, image_green, image_blue))
-new_image.save("new_image.jpg")
-
 coordinates1_red = (50, 0, image_red.width, image_red.height)
 crop1_red = image_red.crop(coordinates1_red)
 
@@ -29,6 +26,5 @@ monro_blend_blue = Image.blend(crop1_blue, crop2_blue, 0.5)
 new_image = Image.merge("RGB", (monro_blend_red, crop1_green, monro_blend_blue))
 new_image.save("new_image.jpg")
 
-resizer_image = Image.open("new_image.jpg")
-resizer_image.thumbnail((80, 80))
-resizer_image.save("resizer_image.jpg")
+new_image.thumbnail((80, 80))
+new_image.save("resizer_image.jpg")
